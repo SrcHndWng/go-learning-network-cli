@@ -1,7 +1,17 @@
 package main
 
-import "log"
+import (
+	"log"
+	"os"
+
+	"github.com/urfave/cli"
+)
 
 func main() {
 	log.Println("Go CLI v0.01")
+
+	err := cli.NewApp().Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
