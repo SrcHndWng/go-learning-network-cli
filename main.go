@@ -4,6 +4,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/SrcHndWng/go-learning-network-cli/commands"
+
 	"github.com/urfave/cli"
 )
 
@@ -20,13 +22,8 @@ func main() {
 		},
 	}
 
-	commands := Commands{Flags: flags}
-
 	// Create commands
-	app.Commands = []cli.Command{
-		commands.Ns(),
-		commands.Ip(),
-	}
+	app.Commands = commands.Create(flags)
 
 	err := app.Run(os.Args)
 	if err != nil {
